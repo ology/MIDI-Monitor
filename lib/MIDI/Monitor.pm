@@ -108,7 +108,7 @@ sub _build_event_arg {
 
   $port = $mm->port;
 
-The selected MIDI port from the list of known port numbers.
+The selected MIDI port from the list of known port names and numbers.
 
 =cut
 
