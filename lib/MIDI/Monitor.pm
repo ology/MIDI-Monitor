@@ -8,16 +8,19 @@ use Moo;
 use strictures 2;
 use Capture::Tiny qw(capture);
 use Carp qw(croak);
+use Term::Choose ();
 use namespace::clean;
 
 =head1 SYNOPSIS
 
   use MIDI::Monitor ();
   my $mm = MIDI::Monitor->new(
+      port    => 20,
       verbose => 1,
   );
   my $ports = $mm->list;
-  $mm->port(20);
+  $mm->port('MPD218 Port A');
+  my $port = $mm->select_port;
   $mm->monitor;
 
 =head1 DESCRIPTION
@@ -161,6 +164,20 @@ sub list {
         }
     }
     return \@parts;
+}
+
+=head2 select_port
+
+  $port = $mm->select_port;
+
+Select and set a MIDI port.
+
+=cut
+
+sub select_port {
+    my ($self) = @_;
+    my $selected;
+    return $selected;
 }
 
 =head2 monitor
