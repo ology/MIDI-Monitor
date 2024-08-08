@@ -8,6 +8,7 @@ use_ok 'MIDI::Monitor';
 
 subtest defaults => sub {
     my $obj = new_ok 'MIDI::Monitor' => [
+        port    => 42,
         verbose => 1,
     ];
     is $obj->verbose, 1, 'verbose';
@@ -16,7 +17,7 @@ subtest defaults => sub {
     ok $obj->list_arg, 'list_arg';
     ok $obj->event_arg, 'event_arg';
     ok $obj->list, 'list';
-    ok !$obj->port, 'port';
+    ok defined $obj->port, 'port';
 };
 
 done_testing();
