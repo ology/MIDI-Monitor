@@ -37,12 +37,9 @@ The current operating system.
 =cut
 
 has os => (
-    is => 'lazy',
+    is      => 'ro',
+    default => sub { $^O },
 );
-
-sub _build_os {
-    return $^O;
-}
 
 =head2 program
 
