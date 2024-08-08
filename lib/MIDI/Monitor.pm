@@ -17,8 +17,8 @@ use namespace::clean;
       port    => 20,
       verbose => 1,
   );
-  print $mm->list;
-  print $mm->monitor;
+  my @ports = $mm->list;
+  $mm->monitor;
 
 =head1 DESCRIPTION
 
@@ -170,6 +170,9 @@ sub list {
         system(@cmd);
     };
     print $stdout if $self->verbose;
+    my @lines = split /\n/, $stdout;
+use Data::Dumper::Compact qw(ddc);
+warn __PACKAGE__,' L',__LINE__,' ',ddc(\@lines);
     return $stdout;
 }
 
