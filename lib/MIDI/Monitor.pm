@@ -171,9 +171,8 @@ sub list {
     };
     print $stdout if $self->verbose;
     my @lines = split /\n/, $stdout;
-use Data::Dumper::Compact qw(ddc);
-warn __PACKAGE__,' L',__LINE__,' ',ddc(\@lines);
-    return $stdout;
+    shift @lines if $self->os eq 'linux';
+    return \@lines;
 }
 
 =head2 monitor
