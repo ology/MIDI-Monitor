@@ -172,7 +172,15 @@ sub list {
     print $stdout if $self->verbose;
     my @lines = split /\n/, $stdout;
     shift @lines if $self->os eq 'linux';
-    return \@lines;
+    my @parts = map { [ split /\s{2,}/, $_ ] } @lines;
+    @parts = map { [ grep { $_ } @$_ ] } @parts;
+    for my $part (@parts) {
+        for (@$part) {
+            s/^\s*//;
+            s/\s*$//;
+        }
+    }
+    return \@parts;
 }
 
 =head2 monitor
