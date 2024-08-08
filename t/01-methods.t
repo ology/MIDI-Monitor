@@ -7,10 +7,8 @@ use Test::More;
 use_ok 'MIDI::Monitor';
 
 subtest defaults => sub {
-    my $obj = new_ok 'MIDI::Monitor' => [
-        verbose => 1,
-    ];
-    is $obj->verbose, 1, 'verbose';
+    my $obj = new_ok 'MIDI::Monitor';
+    ok !$obj->verbose, 'verbose';
     ok $obj->os, 'os';
     ok $obj->program, 'program';
     ok $obj->list_arg, 'list_arg';
