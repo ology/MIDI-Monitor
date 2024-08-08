@@ -177,8 +177,9 @@ Select and set a MIDI port.
 sub select_port {
     my ($self) = @_;
     my $ports = $self->list;
+    my @choices = map { join ' ', @$_ } @$ports;
     my $tc = Term::Choose->new;
-    my $choice = $tc->choose($ports);
+    my $choice = $tc->choose(\@choices);
     $self->port($choice);
     return $choice;
 }
