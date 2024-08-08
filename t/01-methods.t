@@ -16,4 +16,10 @@ subtest defaults => sub {
     ok !$mm->port, 'port';
 };
 
+subtest port => sub {
+    my $mm = new_ok 'MIDI::Monitor' => [ port => 42 ];
+    ok $mm->port, 'port';
+    isa_ok $mm->event_cmd, 'ARRAY', 'event_cmd';
+};
+
 done_testing();
