@@ -173,7 +173,7 @@ sub list {
     my @lines = split /\n/, $stdout;
     shift @lines if $self->os eq 'linux';
     my @parts = map { [ split /\s{2,}/, $_ ] } @lines;
-    @parts = map { [ grep { $_ } @$_ ] } @parts;
+    @parts    = map { [ grep { $_ } @$_ ] } @parts;
     for my $part (@parts) {
         for (@$part) {
             s/^\s*//;
