@@ -17,7 +17,7 @@ use namespace::clean;
       port    => 20,
       verbose => 1,
   );
-  my @ports = $mm->list;
+  my $ports = $mm->list;
   $mm->monitor;
 
 =head1 DESCRIPTION
