@@ -137,7 +137,7 @@ Create a new C<MIDI::Monitor> object.
 
 =head2 list
 
-  $list = $mm->list;
+  $port_list = $mm->list;
 
 List the known MIDI ports.
 
