@@ -21,7 +21,7 @@ use namespace::clean;
   my $ports = $mm->list;       # list the known ports
   $mm->port('MPD218 Port A');  # set the port
   my $port = $mm->select_port; # this sets the port
-  $mm->monitor;
+  $mm->monitor;                # listen to the port
 
 =head1 DESCRIPTION
 
