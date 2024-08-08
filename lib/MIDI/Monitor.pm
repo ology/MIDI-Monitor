@@ -185,6 +185,7 @@ sub monitor {
     my $cmd = join ' ', $self->event_cmd->@*;
     open my $fh, '-|', $cmd or die $!;
     while (my $line = readline($fh)) {
+        # TODO something cool
         print $line;
     }
 }
