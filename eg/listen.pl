@@ -5,8 +5,8 @@ use warnings;
 use MIDI::Monitor ();
 my $mm = MIDI::Monitor->new(
     port    => 20,
-    verbose => 1,
+    # verbose => 1,
 );
-# print $mm->list;
+$mm->list;
 # print join(', ', $mm->event_cmd->@*), "\n";exit;
-print $mm->monitor;
+# print $mm->monitor;
