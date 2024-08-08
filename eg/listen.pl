@@ -7,5 +7,6 @@ my $mm = MIDI::Monitor->new(
     port    => 20,
     verbose => 1,
 );
-# print $mm->list;exit;
+# print $mm->list;
+# print join(', ', $mm->event_cmd->@*), "\n";exit;
 print $mm->monitor;
