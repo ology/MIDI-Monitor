@@ -62,19 +62,9 @@ sub _build_program {
     return $program;
 }
 
-=head2 list_arg
-
-  $list_arg = $mm->list_arg;
-
-The program flag to show the known MIDI ports.
-
-=cut
-
-has list_arg => (
-    is => 'lazy',
-);
-
-sub _build_list_arg {
+# program flag to show the known MIDI ports
+has _list_arg => (is => 'lazy');
+sub _build__list_arg {
     my ($self) = @_;
     my $list_arg = 'list';
     if ($self->os eq 'linux') {
@@ -83,19 +73,9 @@ sub _build_list_arg {
     return $list_arg;
 }
 
-=head2 event_arg
-
-  $event_arg = $mm->event_arg;
-
-The program flag to show the live data of a triggered MIDI port.
-
-=cut
-
-has event_arg => (
-    is => 'lazy',
-);
-
-sub _build_event_arg {
+# program flag to show the live data of a triggered MIDI port.
+has _event_arg => (is => 'lazy');
+sub _build__event_arg {
     my ($self) = @_;
     my $event_arg = 'dev';
     if ($self->os eq 'linux') {
@@ -130,7 +110,7 @@ has event_cmd => (
 
 sub _build_event_cmd {
     my ($self) = @_;
-    return [ $self->program, $self->event_arg, "'" . $self->port . "'" ];
+    return [ $self->program, $self->_event_arg, "'" . $self->port . "'" ];
 }
 
 =head2 verbose
@@ -165,7 +145,7 @@ List the known MIDI ports.
 
 sub list {
     my ($self) = @_;
-    my @cmd = ($self->program, $self->list_arg);
+    my @cmd = ($self->program, $self->_list_arg);
     my ($stdout, $stderr, $exit) = capture {
         system(@cmd);
     };
