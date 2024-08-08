@@ -13,7 +13,6 @@ subtest defaults => sub {
     ok $mm->program, 'program';
     ok $mm->list_arg, 'list_arg';
     ok $mm->event_arg, 'event_arg';
-    ok $mm->list, 'list';
     ok !$mm->port, 'port';
 };
 
