@@ -176,8 +176,11 @@ Select and set a MIDI port.
 
 sub select_port {
     my ($self) = @_;
-    my $selected;
-    return $selected;
+    my $ports = $self->list;
+    my $tc = Term::Choose->new;
+    my $choice = $tc->choose($ports);
+    $self->port($choice);
+    return $choice;
 }
 
 =head2 monitor
