@@ -14,10 +14,10 @@ use namespace::clean;
 
   use MIDI::Monitor ();
   my $mm = MIDI::Monitor->new(
-      port    => 20,
       verbose => 1,
   );
   my $ports = $mm->list;
+  $mm->port(20);
   $mm->monitor;
 
 =head1 DESCRIPTION
@@ -113,7 +113,7 @@ The selected MIDI port from the list of known port names and numbers.
 =cut
 
 has port => (
-    is => 'ro',
+    is => 'rw',
 );
 
 =head2 event_cmd
