@@ -169,6 +169,7 @@ sub list {
     my ($stdout, $stderr, $exit) = capture {
         system(@cmd);
     };
+    print $stdout if $self->verbose;
     return $stdout;
 }
 
@@ -185,8 +186,8 @@ sub monitor {
     my $cmd = join ' ', $self->event_cmd->@*;
     open my $fh, '-|', $cmd or die $!;
     while (my $line = readline($fh)) {
+        print $line if $self->verbose;
         # TODO something cool
-        print $line;
     }
 }
 
