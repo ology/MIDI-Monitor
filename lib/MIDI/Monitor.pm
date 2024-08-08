@@ -15,12 +15,12 @@ use namespace::clean;
 
   use MIDI::Monitor ();
   my $mm = MIDI::Monitor->new(
-      port    => 20,
+      port    => 20,           # set the port
       verbose => 1,
   );
-  my $ports = $mm->list;
-  $mm->port('MPD218 Port A');
-  my $port = $mm->select_port;
+  my $ports = $mm->list;       # list the known ports
+  $mm->port('MPD218 Port A');  # set the port
+  my $port = $mm->select_port; # this sets the port
   $mm->monitor;
 
 =head1 DESCRIPTION
