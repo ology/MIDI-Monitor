@@ -4,6 +4,7 @@ package MIDI::Monitor;
 
 our $VERSION = '0.0100';
 
+use Data::Dumper::Compact qw(ddc);
 use Moo;
 use strictures 2;
 use Capture::Tiny qw(capture);
@@ -200,7 +201,14 @@ sub monitor {
     my $cmd = join ' ', $self->event_cmd->@*;
     open my $fh, '-|', $cmd or die $!;
     while (my $line = readline($fh)) {
+        next if $line =~ /^Waiting/ || $line =~ /^Source/;
         print $line if $self->verbose;
+        chomp $line;
+        my @parts = split /\s{2,}/, $line;
+        for (@parts) {
+            s/^\s*//;
+            s/\s*$//;
+        }
         # TODO something cool
     }
 }
