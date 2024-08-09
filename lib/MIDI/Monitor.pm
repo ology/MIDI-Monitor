@@ -179,7 +179,7 @@ sub select_port {
     my $ports = $self->list;
     my @choices = map { join ' ', @$_ } @$ports;
     my $tc = Term::Choose->new;
-    my $choice = $tc->choose(\@choices);
+    my $choice = $tc->choose(\@choices, { layout => 2 });
     if ($self->os eq 'linux') {
         ($choice) = split ':', $choice;
     }
