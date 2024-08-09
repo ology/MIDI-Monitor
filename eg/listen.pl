@@ -9,4 +9,5 @@ my $mm = MIDI::Monitor->new(
 );
 
 $mm->select_port;
+
 $mm->monitor;
