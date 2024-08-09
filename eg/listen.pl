@@ -9,5 +9,4 @@ my $mm = MIDI::Monitor->new(
 );
 # $mm->list;
 $mm->select_port;
-warn __PACKAGE__,' L',__LINE__,' ',$mm->port,"\n";
-# print $mm->monitor;
+print $mm->monitor;
