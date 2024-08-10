@@ -221,6 +221,12 @@ sub monitor {
             $event{val}     = $value[2];
         }
         else {
+            # channel 10   note-on           C1   7
+            # channel  1   control-change     5   127
+            $event{event}   = $parts[1];
+            $event{channel} = $parts[0];
+            $event{key}     = $parts[2];
+            $event{val}     = $parts[3];
         }
         # TODO something cool
     }
