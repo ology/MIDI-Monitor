@@ -209,6 +209,19 @@ sub monitor {
             s/^\s*//;
             s/\s*$//;
         }
+        my %event;
+        if ($self->os eq 'linux') {
+            # 20:0   Note on                 9, note 36, velocity 56
+            # 20:0   Control change          0, controller 1, value 1
+            my @value = split /,\s*/, $parts[2];
+            $event{port}    = $parts[0];
+            $event{event}   = $parts[1];
+            $event{channel} = $value[0];
+            $event{key}     = $value[1];
+            $event{val}     = $value[2];
+        }
+        else {
+        }
         # TODO something cool
     }
 }
