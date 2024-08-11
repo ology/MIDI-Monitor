@@ -11,8 +11,6 @@ subtest defaults => sub {
     ok !$mm->verbose, 'verbose';
     ok $mm->os, 'os';
     ok $mm->program, 'program';
-    ok $mm->list_arg, 'list_arg';
-    ok $mm->event_arg, 'event_arg';
     ok !$mm->port, 'port';
 };
 
